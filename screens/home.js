@@ -26,15 +26,6 @@ const Home = ({ navigation }) => {
         >
           <Text style={tw`btnText`}>Start!</Text>
         </Icon.Button>
-        {/*<Button
-          //theme={colors}
-          //style={{ color: colors.primary }}
-          mode="contained"
-          icon="play"
-          onPress={() => navigation.navigate("Quiz")}
-        >
-          Start!
-        </Button>*/}
       </View>
     </SafeAreaView>
   );
