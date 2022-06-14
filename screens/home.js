@@ -2,11 +2,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import Title from "../components/title";
 import { SafeAreaView } from "react-native-safe-area-context";
-import tw from "twrnc";
-import { Button, useTheme } from "react-native-paper";
+import tw from "../libs/tailwind";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const Home = ({ navigation }) => {
-  const { colors } = useTheme();
   return (
     <SafeAreaView style={tw`justify-center flex-1`}>
       <View style={tw`p-5 w-full items-center`}>
@@ -17,15 +16,25 @@ const Home = ({ navigation }) => {
               resizeMode="contain"
           />
         </View>*/}
-        <Button
-          theme={colors}
+
+        <Icon.Button
+          name="play"
+          size={20}
+          color="white"
+          style={tw`btnBg`}
+          onPress={() => navigation.navigate("Quiz")}
+        >
+          <Text style={tw`btnText`}>Start!</Text>
+        </Icon.Button>
+        {/*<Button
+          //theme={colors}
           //style={{ color: colors.primary }}
           mode="contained"
           icon="play"
           onPress={() => navigation.navigate("Quiz")}
         >
           Start!
-        </Button>
+        </Button>*/}
       </View>
     </SafeAreaView>
   );
@@ -38,5 +47,4 @@ const styles = StyleSheet.create({
     height: 300,
     width: 300,
   },
-  buttonText: { color: "white", fontWeight: "600", alignItems: "center" },
 });

@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import tw from "twrnc";
+import tw from "../libs/tailwind";
 import { useFocusEffect } from "@react-navigation/native";
-import {
-  ActivityIndicator,
-  Portal,
-  Modal,
-  useTheme,
-  Button,
-} from "react-native-paper";
 import OptionBtn from "../components/optionBtn";
+import FIcon from "react-native-vector-icons/FontAwesome";
+import MCIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,7 +21,6 @@ const shuffleArray = (array) => {
 };
 
 const Quiz = ({ navigation }) => {
-  const { colors } = useTheme();
   const [questions, setQuestions] = useState([]);
   const [questNumber, setQuestNumber] = useState(0);
   const [options, setOptions] = useState([]);
@@ -93,7 +93,7 @@ const Quiz = ({ navigation }) => {
       <View style={tw`p-5 w-full items-center`}>
         {isLoading ? (
           <View style={tw`flex justify-center align-center h-full`}>
-            <ActivityIndicator animating={isLoading} size="large" />
+            <ActivityIndicator size="large" animating={isLoading} />
           </View>
         ) : (
           questions &&
@@ -127,39 +127,39 @@ const Quiz = ({ navigation }) => {
                 {questNumber !== 9 && (
                   <React.Fragment>
                     {!showNext && (
-                      <Button
-                        theme={colors}
-                        //style={{ color: colors.primary }}
-                        icon="debug-step-over"
-                        mode="contained"
+                      <MCIcon.Button
+                        name="debug-step-over"
+                        size={20}
+                        color="white"
+                        style={tw`btnBg`}
                         onPress={nextQuestion}
                       >
-                        SKIP
-                      </Button>
+                        <Text style={tw`btnText`}>SKIP</Text>
+                      </MCIcon.Button>
                     )}
 
                     {showNext && (
-                      <Button
-                        theme={colors}
-                        //style={{ color: colors.primary }}
-                        icon="skip-next"
-                        mode="contained"
+                      <FIcon.Button
+                        name="forward"
+                        size={20}
+                        color="white"
+                        style={tw`btnBg`}
                         onPress={handleNextButton}
                       >
-                        NEXT
-                      </Button>
+                        <Text style={tw`btnText`}>NEXT</Text>
+                      </FIcon.Button>
                     )}
                   </React.Fragment>
                 )}
-                <Button
-                  theme={colors}
-                  //style={{ color: colors.primary }}
-                  icon="trophy"
-                  mode="contained"
+                <MCIcon.Button
+                  name="trophy"
+                  size={20}
+                  color="white"
+                  style={tw`btnBg`}
                   onPress={handleShowResult}
                 >
-                  END
-                </Button>
+                  <Text style={tw`btnText`}>END</Text>
+                </MCIcon.Button>
               </View>
             </View>
           )

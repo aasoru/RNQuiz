@@ -1,3 +1,4 @@
+const { plugin } = require("twrnc");
 module.exports = {
   content: [
     "./screens/**/*.{js,ts,jsx,tsx}",
@@ -6,10 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        "primary-light": "var(--color-primary-light)",
-        "primary-dark": "var(--color-primary-dark)",
-        "primary-darkest": "var(--color-primary-darkest)",
+        blue: "#1fb6ff",
+        purple: "#7e5bef",
+        pink: "#ff49db",
+        orange: "#ff7849",
+        green: "#13ce66",
+        yellow: "#ffc82c",
+        "gray-dark": "#273444",
+        gray: "#8492a6",
+        "gray-light": "#d3dce6",
+        primary: "#F3C1FF",
+
         secondary: {
           100: "#F3C1FF",
           300: "#D74FFA",
@@ -31,5 +39,13 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        btnBg: `rounded bg-[#1fb6ff] text-white p-3`,
+        btnText: `text-white uppercase font-bold`,
+        "body-text": `font-serif leading-relaxed tracking-wide text-gray-800`,
+      });
+    }),
+  ],
 };
